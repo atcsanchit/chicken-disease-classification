@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: chicken-disease-classification
+Version: 0.0.1
+Author: Sanchit
+Author-email: atcsanchit@gmail.com
+Requires-Dist: pandas
+Requires-Dist: numpy
