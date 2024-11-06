@@ -163,5 +163,6 @@ cython_debug/
 
 
 #add folders to ignore
+!artifacts/
 artifacts/data_ingestion/
 logs/
