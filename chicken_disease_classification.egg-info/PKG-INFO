@@ -5,3 +5,17 @@ Author: Sanchit
 Author-email: atcsanchit@gmail.com
 Requires-Dist: pandas
 Requires-Dist: numpy
+Requires-Dist: tensorflow
+Requires-Dist: dvc
+Requires-Dist: notebook
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: python-box==6.0.2
+Requires-Dist: pyYAML
+Requires-Dist: tqdm
+Requires-Dist: ensure==1.0.2
+Requires-Dist: joblib
+Requires-Dist: types-PyYAML
+Requires-Dist: scipy
+Requires-Dist: Flask
+Requires-Dist: Flask-Cors
