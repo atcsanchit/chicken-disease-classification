@@ -12,8 +12,8 @@ from src.exception import CustomException
 @dataclass
 class PrepareBaseModelConfig:
     
-    base_model_path = "../artifacts/prepare_base_model/base_model.h5"
-    updated_base_model_path = "../artifacts/prepare_base_model/base_model_updated.h5"
+    base_model_path = "artifacts/prepare_base_model/base_model.h5"
+    updated_base_model_path = "artifacts/prepare_base_model/base_model_updated.h5"
     params_image_shape = [224, 224, 3]
     params_learning_rate = 0.01
     params_include_top = False
