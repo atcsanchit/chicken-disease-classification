@@ -35,3 +35,12 @@ def create_directory(paths:list, verbose=True):
     except Exception as e:
         logging.info("Error in create_directory utils")
         raise CustomException(e,sys)
+
+
+def save_json(path:Path, data:dict):
+    try:
+        with open(path, "w") as file:
+            json.dump(data,file,indent=4)
+    except Exception as e:
+        logging.info("Error in save_json utils")
+        raise CustomException(e,sys)

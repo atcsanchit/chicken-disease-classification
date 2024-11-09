@@ -20,9 +20,10 @@ class TrainingConfig:
     params_image_size = [224,224,3]
     params_batch_size = 16
     training_data = os.path.join("artifacts/data_ingestion","Chicken-fecal-images")
-    params_epochs = 1
+    params_epochs = 5
     params_is_augmentation = True
     trained_model_path = "artifacts/training/model.h5"
+    params_learning_rate = 0.01
 
 class Training:
     def __init__(self):
@@ -30,14 +31,25 @@ class Training:
     
     def get_base_model(self):
         try:
-            base_model = load_model(self.training_config.updated_base_model_path, compile=False)
-            inputs = tf.keras.Input(shape=(224, 224, 3))
-            outputs = base_model(inputs)
-            self.model = tf.keras.Model(inputs=inputs, outputs=outputs)
+            # base_model = load_model(self.training_config.updated_base_model_path, compile=False)
+            # inputs = tf.keras.Input(shape=(224, 224, 3))
+            # outputs = base_model(inputs)
+            # self.model = tf.keras.Model(inputs=inputs, outputs=outputs)
+            # self.model.compile(
+            #     optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
+            #     loss='categorical_crossentropy',
+            #     metrics=['accuracy']
+            # )
+
+
+            self.model = tf.keras.models.load_model(
+                self.training_config.updated_base_model_path,
+                compile = False
+            )
             self.model.compile(
-                optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
-                loss='categorical_crossentropy',
-                metrics=['accuracy']
+                optimizer = tf.keras.optimizers.SGD(learning_rate = self.training_config.params_learning_rate),
+                loss = tf.keras.losses.CategoricalCrossentropy(),
+                metrics = ["accuracy"]
             )
 
         except Exception as e:
