@@ -31,4 +31,5 @@ stages:
     - artifacts\training\model.h5
     # - artifacts\data_ingestion\Chicken-fecal-images
     metrics:
-    - scores.json # cache: false
+    - scores.json:
+        cache: false
