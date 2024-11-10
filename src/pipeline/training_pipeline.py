@@ -14,6 +14,8 @@ class TrainingPipeline:
 
     def initiate_pipeline(self):
         try:
+            logging.info("Initiating training pipeline")
+            print("Initiating training pipeline")
             prepare_callback_obj = PrepareCallback()
             callback_list = prepare_callback_obj.get_tb_ckpt_callbacks()     
             training_obj = Training()
@@ -22,6 +24,8 @@ class TrainingPipeline:
             training_obj.initiate_train(
                 callback_list=callback_list
             )
+            print("training pipeline has been successfully executed")
+            print("*"*20)
 
 
         except Exception as e:

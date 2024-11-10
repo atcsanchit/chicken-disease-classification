@@ -1,0 +1,9 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src\pipeline\data_ingestion_pipeline.py
+    deps:
+    - path: src\components\data_ingestion.py
+      hash: md5
+      md5: 606174c6abd1f7e99656f0d7452562f3
+      size: 2313

@@ -13,8 +13,12 @@ class DataIngestionPipeline:
 
     def initiate_pipeline(self):
         try:
+            logging.info("Initiating data ingestion pipeline")
+            print("Initiating data ingestion pipeline")
             data_ingestion_obj = DataIngestion()
-            data_ingestion_obj.initiate_data_ingestion()            
+            data_ingestion_obj.initiate_data_ingestion()       
+            print("data ingestion pipeline has been successfully executed")
+            print("*"*20)        
 
         except Exception as e:
             logging.info("Error in main method")

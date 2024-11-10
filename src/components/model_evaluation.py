@@ -21,47 +21,67 @@ class Evaluation:
         self.evaluation_config = EvaluationConfig()
     
     def valid_generator(self):
-        datagenerator_kwargs = dict(
-            rescale = 1./255,
-            validation_split = 0.20
-        )
+        try:    
+            datagenerator_kwargs = dict(
+                rescale = 1./255,
+                validation_split = 0.20
+            )
 
-        dataflow_kwargs = dict(
-            target_size = self.evaluation_config.params_image_size[:-1],
-            batch_size = self.evaluation_config.params_batch_size,
-            interpolation = "bilinear"
-        )
+            dataflow_kwargs = dict(
+                target_size = self.evaluation_config.params_image_size[:-1],
+                batch_size = self.evaluation_config.params_batch_size,
+                interpolation = "bilinear"
+            )
 
-        valid_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
-            **datagenerator_kwargs
-        )
+            valid_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
+                **datagenerator_kwargs
+            )
 
-        self.valid_generator = valid_datagenerator.flow_from_directory(
-            directory = self.evaluation_config.training_data,
-            subset = "validation",
-            shuffle = False,
-            **dataflow_kwargs
-        )
+            self.valid_generator = valid_datagenerator.flow_from_directory(
+                directory = self.evaluation_config.training_data,
+                subset = "validation",
+                shuffle = False,
+                **dataflow_kwargs
+            )
+        
+        except Exception as e:
+            logging.info("Error in valid_generator")
+            raise CustomException(e,sys)
 
     @staticmethod
     def load_model(path:Path) -> tf.keras.Model:
-        return tf.keras.models.load_model(
-            path
-        )
+        try:
+            return tf.keras.models.load_model(
+                path
+            )
+        
+        except Exception as e:
+            logging.info("Error in load_model")
+            raise CustomException(e,sys)
 
     def initiate_evaluation(self):
-        self.model = self.load_model(self.evaluation_config.path_to_model)
-        self.model.compile(
-            optimizer='adam',
-            loss='categorical_crossentropy',  # or whatever loss you used during training
-            metrics=[tf.keras.metrics.Accuracy()]
-        )
-        self.valid_generator()
-        self.score = self.model.evaluate(self.valid_generator)
+        try:                
+            self.model = self.load_model(self.evaluation_config.path_to_model)
+            self.model.compile(
+                optimizer='adam',
+                loss='categorical_crossentropy',  # or whatever loss you used during training
+                metrics=[tf.keras.metrics.Accuracy()]
+            )
+            self.valid_generator()
+            self.score = self.model.evaluate(self.valid_generator)
+        
+        except Exception as e:
+            logging.info("Error in initiate_evaluation")
+            raise CustomException(e,sys)
 
     def save_score(self):
-        scores = {"loss":self.score[0], "accuracy":self.score[1]}
-        save_json(path = Path("scores.json"), data = scores)
+        try:
+            scores = {"loss":self.score[0], "accuracy":self.score[1]}
+            save_json(path = Path("scores.json"), data = scores)
+
+        except Exception as e:
+            logging.info("Error in save_score")
+            raise CustomException(e,sys)
 
 
 if __name__ == "__main__":

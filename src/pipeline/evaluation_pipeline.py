@@ -13,9 +13,13 @@ class EvaluationPipeline:
 
     def initiate_pipeline(self):
         try:
+            logging.info("Initiating evaluation pipeline")
+            print("Initiating evaluation pipeline")
             evaluation_obj = Evaluation()
             evaluation_obj.initiate_evaluation()
             evaluation_obj.save_score()
+            print("evaluation pipeline has been successfully executed")
+            print("*"*20)   
 
 
         except Exception as e:

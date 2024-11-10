@@ -13,9 +13,13 @@ class PrepareBaseModelPipeline:
 
     def initiate_pipeline(self):
         try:
+            logging.info("Initiating prepare base model pipeline")
+            print("Initiating prepare base model pipeline")
             prepare_base_model_obj = PrepareBaseModel()
             prepare_base_model_obj.get_base_model()
-            prepare_base_model_obj.update_base_model()      
+            prepare_base_model_obj.update_base_model() 
+            print("prepare base model pipeline has been successfully executed")
+            print("*"*20)     
 
         except Exception as e:
             logging.info("Error in main method")
