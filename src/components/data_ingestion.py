@@ -10,9 +10,9 @@ from src.exception import CustomException
 @dataclass
 class DataIngestionConfig:
     def __init__(self):
-        self.local_data_file = "/artifacts/data_ingestion/data.zip"
+        self.local_data_file = "artifacts/data_ingestion/data.zip"
         self.source_URL = "https://github.com/entbappy/Branching-tutorial/raw/master/Chicken-fecal-images.zip"
-        self.unzip_dir = "/artifacts/data_ingestion"
+        self.unzip_dir = "artifacts/data_ingestion"
 
 class DataIngestion:
     def __init__(self):

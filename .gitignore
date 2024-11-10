@@ -163,5 +163,7 @@ cython_debug/
 
 
 #add folders to ignore
-Chicken-fecal-images/
+data_ingestion/
 logs/
+artifacts\prepare_base_model
+artifacts\training\model.h5

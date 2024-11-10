@@ -10,6 +10,14 @@ src/exception.py
 src/logger.py
 src/components/__init__.py
 src/components/data_ingestion.py
+src/components/model_evaluation.py
+src/components/prepare_base_model.py
+src/components/prepare_callback.py
+src/components/training.py
 src/pipeline/__init__.py
+src/pipeline/data_ingestion_pipeline.py
+src/pipeline/evaluation_pipeline.py
+src/pipeline/prepare_base_model_pipeline.py
+src/pipeline/training_pipeline.py
 src/utils/__init__.py
-src/utils/utils.py
+src/utils/common.py
