@@ -163,6 +163,7 @@ cython_debug/
 
 
 #add folders to ignore
+scores.json
 data_ingestion/
 logs/
 artifacts\prepare_base_model

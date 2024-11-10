@@ -7,3 +7,25 @@ stages:
       hash: md5
       md5: fe996fee0cecefd77f52d434a17e7548
       size: 2311
+  prepare_base_model:
+    cmd: python src\pipeline\prepare_base_model_pipeline.py
+    deps:
+    - path: src\components\prepare_base_model.py
+      hash: md5
+      md5: b235194178be89d78d745e13756a4aea
+      size: 3706
+  training:
+    cmd: python src\pipeline\training_pipeline.py
+    deps:
+    - path: artifacts\prepare_base_model\base_model_updated.h5
+      hash: md5
+      md5: dfc11a4de3e6510dba24c09e09b02981
+      size: 59137336
+    - path: src\components\prepare_callback.py
+      hash: md5
+      md5: 0a4663afc8295a95cb7584b713d38932
+      size: 1952
+    - path: src\components\training.py
+      hash: md5
+      md5: aefcf58fba48a5b1447dde0f763f720b
+      size: 5315

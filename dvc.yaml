@@ -11,8 +11,8 @@ stages:
     deps:
     - src\components\prepare_base_model.py
     # - artifacts\data_ingestion\Chicken-fecal-images
-    outs:
-    - artifacts\prepare_base_model
+    # outs:
+    # - artifacts\prepare_base_model
 
   training:
     cmd: python src\pipeline\training_pipeline.py
@@ -21,8 +21,8 @@ stages:
     - src\components\prepare_callback.py
     - src\components\training.py
     # - artifacts\data_ingestion\Chicken-fecal-images
-    outs:
-    - artifacts\training\model.h5
+    # outs:
+    # - artifacts\training\model.h5
 
   model_evaluation:
     cmd: python src\pipeline\evaluation_pipeline.py
@@ -31,5 +31,4 @@ stages:
     - artifacts\training\model.h5
     # - artifacts\data_ingestion\Chicken-fecal-images
     metrics:
-    - scores.json:
-        cache: false
+    - scores.json # cache: false
